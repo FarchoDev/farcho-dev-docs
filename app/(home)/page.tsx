@@ -1,19 +1,15 @@
-import Link from 'next/link';
+import Features02Page from '@/components/features-02/features-02';
+import Features06Page from '@/components/features-06/features-06';
+import Footer05Page from '@/components/footer-05/footer-05';
+import Hero06 from '@/components/hero-06/hero-06';
 
 export default function HomePage() {
   return (
-    <main className="flex flex-1 flex-col justify-center text-center">
-      <h1 className="mb-4 text-2xl font-bold">Hello World</h1>
-      <p className="text-fd-muted-foreground">
-        You can open{' '}
-        <Link
-          href="/docs"
-          className="text-fd-foreground font-semibold underline"
-        >
-          /docs
-        </Link>{' '}
-        and see the documentation.
-      </p>
+    <main className="relative flex flex-1 flex-col justify-center text-center">
+      <Hero06/>
+      <Features02Page/>
+      <Features06Page/>
+      <Footer05Page/>
     </main>
   );
 }

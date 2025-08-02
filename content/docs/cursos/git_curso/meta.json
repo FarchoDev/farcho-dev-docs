@@ -1,0 +1,28 @@
+{
+  "title": "Git Curso",
+  "root": true,
+  "pages": [
+    "index",
+    "---Módulo 1. Introducción a Git---",
+    "1.1_que_es_git",
+    "1.2_ventajas_de_usar_git",
+    "1.3_conceptos_basicos",
+    "---Módulo 2. Instalación y Configuración---",
+    "2.1_instalacion_de_git",
+    "2.2_configuracion_inicial_de_git",
+    "---Módulo 3: Uso básico---",
+    "3.1_iniciar_y_clonar_repositorios",
+    "3.2_gestion_basica_de_cambios_y_archivos",
+    "3.3_exploracion_del_historial_y_navegacion",
+    "3.4_trabajo_con_repositorios_remotos",
+    "3.5_funcionalidades_avanzadas",
+    "---Módulo 4. Ramas (Branches)---",
+    "4.1_trabajo_con_ramas",
+    "---Módulo 5. Trabajo Remoto con Git---",
+    "5.1_configuracion_de_repositorios_remotos",
+    "5.2_sincronizacion_de_cambios",
+    "5.3_manejo_de_conflictos",
+    "5.4_trabajo_con_multiples_remotos",
+    "5.5_comandos_avanzados"
+  ]
+}

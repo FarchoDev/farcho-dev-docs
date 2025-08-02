@@ -1,0 +1,119 @@
+---
+title: 1.2. Tipos de pruebas en fases tempranas
+---
+
+import { DocsRating } from '@/components/DocsRating'
+
+Implementar **Shift Left Testing** no solo implica probar antes, sino también **seleccionar el tipo de prueba adecuado para cada fase del ciclo de desarrollo**. A continuación, exploramos las pruebas más relevantes en etapas tempranas, con sus objetivos, momentos de aplicación y herramientas comunes.
+
+---
+
+## Pruebas unitarias (Unit Testing)
+
+- **¿Qué son?**  
+  Verifican de forma aislada el comportamiento de funciones, métodos o componentes individuales.
+
+- **Objetivo:**  
+  Validar la lógica interna y garantizar que cada unidad de código produce los resultados esperados.
+
+- **Cuándo aplicarlas:**  
+  Durante o inmediatamente después de escribir el código fuente.
+
+- **Herramientas comunes:**  
+  `Jest` (JavaScript/TypeScript), `JUnit` (Java), `NUnit` (C#), `PyTest` (Python)
+
+- **Ejemplo práctico:**  
+  Probar que la función `calcularPrecioConDescuento(cliente)` devuelva el monto correcto según el tipo de cliente.
+
+> 💡 Estas pruebas son rápidas, automatizables y fundamentales para evitar regresiones en futuras modificaciones.
+
+---
+
+## Revisión de requerimientos y pruebas de aceptación tempranas
+
+- **¿Qué son?**  
+  Validación anticipada de historias de usuario y criterios de aceptación, incluso antes de comenzar el desarrollo.
+
+- **Objetivo:**  
+  Detectar ambigüedades, supuestos no explícitos, contradicciones o criterios incompletos en los requerimientos.
+
+- **Cuándo aplicarlas:**  
+  Durante sesiones de refinamiento, grooming o planificación.
+
+- **Herramientas utilizadas:**  
+  Documentación colaborativa (`Confluence`, `Notion`), lenguaje estructurado (`Gherkin`, `Markdown`), tableros de historias (`Jira`, `Azure DevOps`).
+
+- **Ejemplo práctico:**  
+  Antes de implementar la funcionalidad “enviar notificación al cliente”, se valida con el PO si se refiere a un correo, SMS o ambos. Este acuerdo se documenta como criterio de aceptación verificable.
+
+> ✅ Detectar problemas en esta fase evita malentendidos costosos en etapas posteriores.
+
+---
+
+## TDD (Test-Driven Development)
+
+- **¿Qué es?**  
+  Técnica de desarrollo donde primero se escriben pruebas unitarias antes de implementar el código funcional. Se escribe solo el código necesario para pasar las pruebas.
+
+- **Ventaja clave:**  
+  Promueve un diseño más limpio y modular, mejora la mantenibilidad y da confianza para refactorizar.
+
+- **Cuándo aplicarlo:**  
+  En lógica de negocio, reglas complejas, validaciones o cálculos.
+
+- **Flujo típico:**
+  1. Escribir una prueba que falla.
+  2. Escribir el código mínimo necesario para que pase.
+  3. Refactorizar manteniendo la prueba verde.
+
+> 🧠 Aplicar TDD en conjunto con herramientas de CI/CD facilita la detección inmediata de fallos al integrar código.
+
+---
+
+## BDD (Behavior-Driven Development)
+
+- **¿Qué es?**  
+  Enfoque similar al TDD, pero centrado en describir el comportamiento del sistema desde la perspectiva del usuario, usando lenguaje natural estructurado (Given-When-Then).
+
+- **Objetivo:**  
+  Fomentar la colaboración entre negocio, testers y desarrolladores, asegurando entendimiento común de lo que debe hacer el software.
+
+- **Herramientas comunes:**  
+  `Cucumber`, `SpecFlow`, `Behave`, `Cypress` + Cucumber, y (más adelante) **Playwright** con integración a BDD vía plugins.
+
+- **Ejemplo práctico:**
+
+```gherkin
+  Scenario: Agendar una cita médica exitosa
+    Given el paciente ha iniciado sesión
+    When selecciona una especialidad y una hora disponible
+    Then el sistema muestra una confirmación de cita
+````
+
+> 📌 Estos escenarios pueden convertirse en pruebas automatizadas directamente conectadas con el código.
+
+---
+
+## Pruebas de integración tempranas
+
+- **¿Qué son?**  
+  Verifican que múltiples componentes interactúan correctamente entre sí: módulos internos, servicios externos, bases de datos, APIs, etc.
+
+- **Objetivo:**  
+  Detectar fallos de comunicación, errores de contrato (por ejemplo, estructura de datos incorrecta) o configuraciones incompatibles.
+
+- **Cuándo aplicarlas:**  
+  Una vez que los componentes principales están listos pero antes de desplegar a un entorno completo.
+
+- **Ejemplo práctico:**  
+  Verificar que, al guardar una cita desde el frontend, se invoque correctamente el microservicio de notificaciones, y se reciba un estado de confirmación válido.
+
+> 🔄 En el contexto de CI, este tipo de pruebas puede ejecutarse automáticamente en ambientes controlados o "mockeados".
+
+---
+
+## Recomendación práctica
+
+Aunque no todas las pruebas se pueden aplicar en todos los proyectos desde el inicio, **la combinación inteligente de pruebas unitarias, revisión de requerimientos, TDD y pruebas de integración tempranas permite detectar el 70-90% de los errores críticos antes de llegar al testing funcional o a producción**.
+
+<DocsRating />

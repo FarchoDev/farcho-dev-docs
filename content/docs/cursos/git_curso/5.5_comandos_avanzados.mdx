@@ -1,0 +1,110 @@
+---
+title: 5.5. Comandos Avanzados
+---
+
+import { DocsRating } from '@/components/DocsRating'
+
+En esta sección, exploraremos comandos avanzados para trabajar con remotos en Git. Nos centraremos en `git remote show` y `git remote rename`, proporcionando una explicación detallada y ejemplos prácticos para cada uno.
+
+## git remote show
+
+El comando `git remote show` proporciona información detallada sobre un remoto específico, incluyendo las ramas rastreadas, las ramas remotas y el estado de las fusiones y fetches.
+
+**Sintaxis**
+
+```bash
+git remote show <nombre>
+```
+
+**Ejemplo Práctico**
+
+1. **Mostrar Información de un Remoto**
+
+   Supongamos que tienes un remoto llamado `origin`. Para ver información detallada sobre este remoto, usa el siguiente comando:
+
+   ```bash
+   git remote show origin
+   ```
+
+   La salida podría ser algo así:
+
+   ```
+   * remote origin
+     Fetch URL: https://github.com/usuario/proyecto.git
+     Push URL: https://github.com/usuario/proyecto.git
+     HEAD branch: main
+     Remote branches:
+       main                    tracked
+       feature-branch          tracked
+     Local branches configured for 'git pull':
+       main           merges with remote main
+     Local refs configured for 'git push':
+       main           pushes to main           (up to date)
+   ```
+
+**Descripción de la Salida**
+
+- **Fetch URL:** La URL desde la cual Git fetch los datos.
+- **Push URL:** La URL a la cual Git push los datos.
+- **HEAD branch:** La rama principal del remoto.
+- **Remote branches:** Las ramas remotas que están siendo rastreadas.
+- **Local branches configured for 'git pull':** Las ramas locales configuradas para hacer pull desde el remoto.
+- **Local refs configured for 'git push':** Las ramas locales configuradas para hacer push al remoto.
+
+## git remote rename
+
+El comando `git remote rename` se utiliza para cambiar el nombre de un remoto existente. Esto puede ser útil si decides cambiar la convención de nombres de tus remotos o si necesitas clarificar el propósito de un remoto específico.
+
+**Sintaxis**
+
+```bash
+git remote rename <nombre_antiguo> <nombre_nuevo>
+```
+
+**Ejemplo Práctico**
+
+1. **Renombrar un Remoto**
+
+   Supongamos que tienes un remoto llamado `backup` y deseas renombrarlo a `secondary`:
+
+   ```bash
+   git remote rename backup secondary
+   ```
+
+2. **Verificar el Cambio**
+
+   Después de renombrar el remoto, usa `git remote -v` para verificar los cambios:
+
+   ```bash
+   git remote -v
+   ```
+
+   La salida debería mostrar el nombre actualizado del remoto:
+
+   ```
+   origin    https://github.com/usuario/proyecto.git (fetch)
+   origin    https://github.com/usuario/proyecto.git (push)
+   secondary https://github.com/usuario/proyecto-backup.git (fetch)
+   secondary https://github.com/usuario/proyecto-backup.git (push)
+   ```
+
+## Resumen de Comandos
+
+- **Mostrar información detallada sobre un remoto:**
+  ```bash
+  git remote show <nombre>
+  ```
+
+- **Renombrar un remoto existente:**
+  ```bash
+  git remote rename <nombre_antiguo> <nombre_nuevo>
+  ```
+
+## Conceptos Clave
+
+- **`git remote show`:** Proporciona información detallada sobre un remoto específico, incluyendo las ramas rastreadas y el estado de las fusiones y fetches.
+- **`git remote rename`:** Cambia el nombre de un remoto existente, lo cual puede ser útil para mantener una convención de nombres clara y organizada.
+
+Estos comandos avanzados te permiten manejar y obtener información detallada sobre tus remotos en Git, mejorando la gestión de tus repositorios y facilitando la colaboración en proyectos complejos.
+
+<DocsRating />
