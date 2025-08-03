@@ -9,8 +9,8 @@ export default function AdsobaPage() {
       <h1 className="text-4xl font-bold">Análisis y Desarrollo de Software</h1>
 
       <Section
-        title="Cursos"
-        description="Explora nuestros cursos y documentación para mejorar tus habilidades."
+        title="Fase 1: Análisis"
+        description=""
       >
         <DocumentGrid />
       </Section>

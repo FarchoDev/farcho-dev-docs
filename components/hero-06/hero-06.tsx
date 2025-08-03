@@ -21,22 +21,27 @@ const Hero06 = () => {
             Farcho Dev Docs
           </h1>
           <p className="mt-6 text-[17px] md:text-lg">
-            Un espacio creado para aprendices del SENA que organiza y preserva materiales de formación, cursos especializados y recursos clave para fortalecer tu aprendizaje en desarrollo de software.
+            Un espacio creado de manera independiente por aprendices, que organiza y preserva materiales de formación vistos en la Tecnología en Análisis y Desarrollo de Software del SENA. Aquí encontrarás cursos complementarios y recursos clave para fortalecer tu aprendizaje en desarrollo de software.
           </p>
           <div className="mt-12 flex items-center justify-center gap-4">
-            <Button size="lg" className="rounded-full text-base">
-              GitHub 
-              <Link href="https://github.com/FarchoDev" target="_blank">
+            <Link href="https://github.com/FarchoDev" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="rounded-full text-base flex items-center gap-2"
+              >
+                GitHub
                 <GithubIcon className="h-5 w-5" />
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full text-base shadow-none"
-            >
-              <CirclePlay className="!h-5 !w-5" /> Empecemos
-            </Button>
+              </Button>
+            </Link>
+            <Link href="/adso" rel="noopener noreferrer">
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-full text-base shadow-none"
+              >
+                <CirclePlay className="h-5 w-5" /> Empecemos
+              </Button>
+            </Link>
           </div>
         </div>
     </div>

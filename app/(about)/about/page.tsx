@@ -11,42 +11,48 @@ export default function AboutPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-3">Nuestra misión</h2>
           <p className="text-gray-700 dark:text-gray-300 mb-4">
-            Este sitio web ha sido creado con el propósito de preservar y organizar de manera estructurada los materiales de formación utilizados en la <strong>Tecnología en Análisis y Desarrollo de Software</strong> del <strong>SENA</strong>. A medida que los aprendices avanzan en su proceso de formación, muchos de estos recursos desaparecen, dificultando su acceso en el futuro.
+            Este sitio web es una iniciativa personal, creada por y para aprendices con el objetivo de preservar y organizar de forma estructurada los materiales de estudio vistos durante la formación en la <strong>Tecnología en Análisis y Desarrollo de Software</strong>, ofrecida gratuitamente por el <strong>SENA</strong>.
           </p>
           <p className="text-gray-700 dark:text-gray-300">
-            Aquí, centralizamos estos materiales para garantizar que cualquier aprendiz pueda consultarlos en cualquier momento, facilitando su aprendizaje y permitiéndoles reforzar sus conocimientos a lo largo del tiempo.
+            A medida que los aprendices avanzan en su proceso formativo, muchos de estos recursos desaparecen o dejan de estar disponibles, dificultando su consulta posterior. Esta plataforma busca centralizar y facilitar el acceso a ese conocimiento como herramienta de repaso y autoformación.
           </p>
         </section>
         
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-3">📚 Material de formación</h2>
+          <h2 className="text-2xl font-semibold mb-3">📚 Material de estudio</h2>
           <p className="text-gray-700 dark:text-gray-300">
-            En esta sección, encontrarás una recopilación cronológica de los recursos utilizados durante la formación en el <strong>SENA</strong>. La información se presenta de manera organizada, asegurando que cada tema esté disponible en el orden en que se imparte en el programa de estudios.
+            Aquí encontrarás una recopilación cronológica y estructurada de los temas abordados durante la formación. Todo el contenido ha sido elaborado de forma independiente a partir de experiencias académicas, resúmenes personales y conocimientos adquiridos por los aprendices.
           </p>
         </section>
         
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-3">🎓 Cursos adicionales</h2>
           <p className="text-gray-700 dark:text-gray-300">
-            Además del material oficial del <strong>SENA</strong>, este sitio también ofrece cursos complementarios diseñados para fortalecer habilidades clave en el desarrollo de software. Entre ellos, encontrarás cursos sobre <strong>Git, GitHub, Conventional Commits</strong> y otros temas fundamentales para la industria.
+            Además del contenido académico estudiado, se incluyen cursos complementarios diseñados para fortalecer habilidades técnicas esenciales en el área del desarrollo de software, como <strong>Git, GitHub, Conventional Commits</strong> y otros fundamentos relevantes para la industria.
           </p>
         </section>
         
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-3">¿Por qué es importante este sitio?</h2>
           <p className="text-gray-700 dark:text-gray-300">
-            Este espacio se ha construido con la intención de ser un <strong>recurso de consulta permanente</strong> para los aprendices y futuros desarrolladores. Al mantener un acceso ordenado y estructurado a estos conocimientos, buscamos facilitar el proceso de aprendizaje y contribuir a una mejor formación en el área de desarrollo de software.
+            Este espacio se construyó con la intención de servir como <strong>recurso de consulta permanente</strong> para los aprendices, tanto durante como después de su proceso de formación. Al mantener el acceso organizado y accesible, se busca facilitar la continuidad del aprendizaje y apoyar el crecimiento profesional de los futuros desarrolladores.
           </p>
         </section>
         
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-3">Contribuciones y mejoras</h2>
           <p className="text-gray-700 dark:text-gray-300">
-            Si tienes sugerencias, nuevos materiales o mejoras para este sitio, ¡serán bienvenidas! Nuestro objetivo es seguir ampliando y optimizando este espacio para que sea un referente útil y confiable para toda la comunidad de aprendices del <strong>SENA</strong>.
+            Este sitio está abierto a sugerencias, aportes y mejoras. Si tienes ideas, materiales adicionales o deseas colaborar, ¡eres bienvenido! Nuestro objetivo es seguir construyendo colectivamente una herramienta útil y confiable para todos los aprendices.
           </p>
         </section>
-        
-        <p className="text-lg text-center font-medium mt-6">¡Esperamos que disfrutes el aprendizaje! 🎉</p>
+
+        <section className="mt-10">
+          <div className="bg-yellow-100 dark:bg-yellow-900 p-4 rounded-xl text-sm text-gray-800 dark:text-gray-100">
+            <strong>Nota legal:</strong> Este sitio no está afiliado oficialmente al Servicio Nacional de Aprendizaje (SENA). Es un proyecto independiente creado con fines educativos. No se reproducen materiales oficiales ni se busca reemplazar contenidos institucionales. Consulta nuestro <a href="/LegalPage" className="underline font-medium">Aviso Legal</a> para más información.
+          </div>
+        </section>
+
+        <p className="text-lg text-center font-medium mt-8">¡Esperamos que disfrutes el aprendizaje! 🎉</p>
       </div>
     </main>
   );
