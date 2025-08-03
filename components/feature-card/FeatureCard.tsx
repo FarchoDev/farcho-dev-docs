@@ -7,17 +7,51 @@ import Link from "next/link";
 import { memo } from "react";
 import { APP_CONFIG } from "@/lib/config";
 
+/**
+ * Props for the FeatureCard component
+ */
 interface FeatureCardProps {
+  /** The title to display on the card */
   title: string;
+  /** The description text to display below the title */
   description: string;
+  /** Object containing light and dark theme image URLs */
   images: {
+    /** Image URL for light theme */
     light: string;
+    /** Image URL for dark theme */
     dark: string;
   };
+  /** Index used for staggered animations (starts from 0) */
   index: number;
+  /** The destination URL when the card is clicked */
   link: string;
 }
 
+/**
+ * FeatureCard Component
+ * 
+ * A responsive, animated card component that displays featured content with theme-aware images.
+ * Includes hover effects, proper accessibility features, and consistent styling across the application.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <FeatureCard
+ *   title="Curso Git"
+ *   description="Aprende Git desde cero con ejemplos prácticos"
+ *   images={{
+ *     light: "/images/git-light.svg",
+ *     dark: "/images/git-dark.svg"
+ *   }}
+ *   index={0}
+ *   link="/docs/cursos/git_curso"
+ * />
+ * ```
+ * 
+ * @param props - The component props
+ * @returns A memoized feature card component
+ */
 const FeatureCard = memo<FeatureCardProps>(({ 
   title, 
   description, 
@@ -28,15 +62,13 @@ const FeatureCard = memo<FeatureCardProps>(({
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = resolvedTheme || theme || 'light';
 
-  // Obtener imagen de acuerdo al tema
+  // Obtener imagen de acuerdo al tema con fallback robusto
   const selectedImage = images?.[currentTheme === "dark" ? "dark" : "light"];
-
-  // Validar y aplicar fallback robusto usando configuración
   const imageSrc = selectedImage && selectedImage.trim() !== ""
     ? selectedImage
     : APP_CONFIG.images.fallback;
 
-  // Usar configuración para animaciones
+  // Usar configuración centralizada para animaciones y componentes
   const animationConfig = APP_CONFIG.animation;
   const componentConfig = APP_CONFIG.components.featureCard;
 
@@ -52,13 +84,15 @@ const FeatureCard = memo<FeatureCardProps>(({
       }}
       whileHover={{ scale: componentConfig.hoverScale }}
       whileTap={{ scale: componentConfig.tapScale }}
+      role="article"
+      aria-labelledby={`feature-title-${index}`}
     >
       <div className={`mb-5 sm:mb-6 w-full aspect-[${componentConfig.aspectRatio}] relative ${componentConfig.borderRadius} overflow-hidden`}>
         {imageSrc && (
-          <Link href={link} className="block h-full">
+          <Link href={link} className="block h-full" aria-label={`Ver más sobre ${title}`}>
              <Image
                src={imageSrc}
-               alt={title}
+               alt={`Imagen representativa de ${title}`}
                fill
                className={`object-cover ${componentConfig.borderRadius} cursor-pointer transition-transform duration-300 group-hover:scale-105 hover:brightness-90`}
                sizes={APP_CONFIG.images.defaultSizes}
@@ -68,7 +102,10 @@ const FeatureCard = memo<FeatureCardProps>(({
            </Link>
         )}
       </div>
-      <h3 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+      <h3 
+        id={`feature-title-${index}`}
+        className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white group-hover:text-primary transition-colors"
+      >
         {title}
       </h3>
       <p className="mt-2 max-w-[25ch] text-muted-foreground text-[17px] text-gray-600 dark:text-gray-300 leading-relaxed">
