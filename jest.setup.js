@@ -25,9 +25,18 @@ jest.mock('next-themes', () => ({
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }) => <div {...props}>{children}</div>,
-    article: ({ children, ...props }) => <article {...props}>{children}</article>,
-    span: ({ children, ...props }) => <span {...props}>{children}</span>,
+    div: React.forwardRef(({ children, ...props }, ref) => {
+      const { initial, animate, transition, whileHover, whileTap, ...cleanProps } = props;
+      return <div ref={ref} {...cleanProps}>{children}</div>;
+    }),
+    article: React.forwardRef(({ children, ...props }, ref) => {
+      const { initial, animate, transition, whileHover, whileTap, ...cleanProps } = props;
+      return <article ref={ref} {...cleanProps}>{children}</article>;
+    }),
+    span: React.forwardRef(({ children, ...props }, ref) => {
+      const { initial, animate, transition, whileHover, whileTap, ...cleanProps } = props;
+      return <span ref={ref} {...cleanProps}>{children}</span>;
+    }),
   },
   AnimatePresence: ({ children }) => children,
 }))
