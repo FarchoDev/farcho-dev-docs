@@ -12,21 +12,37 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
-  if (!page) notFound();
+  try {
+    const params = await props.params;
+    const page = source.getPage(params.slug);
+    if (!page) notFound();
 
-  const MDX = page.data.body;
+    const MDX = page.data.body;
 
-  return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
-      <DocsBody>
-        <MDX components={{ ...defaultMdxComponents }} />
-      </DocsBody>
-    </DocsPage>
-  );
+    return (
+      <DocsPage toc={page.data.toc} full={page.data.full}>
+        <DocsTitle>{page.data.title}</DocsTitle>
+        <DocsDescription>{page.data.description}</DocsDescription>
+        <DocsBody>
+          <ErrorBoundary 
+            showError={process.env.NODE_ENV === 'development'}
+            fallback={
+              <div className="p-6 text-center border border-destructive/50 rounded-lg bg-destructive/5">
+                <p className="text-sm text-muted-foreground">
+                  Error al cargar el contenido de la documentación.
+                </p>
+              </div>
+            }
+          >
+            <MDX components={{ ...defaultMdxComponents }} />
+          </ErrorBoundary>
+        </DocsBody>
+      </DocsPage>
+    );
+  } catch (error) {
+    console.error('Error en la página de documentación:', error);
+    notFound();
+  }
 }
 
 export async function generateStaticParams() {
