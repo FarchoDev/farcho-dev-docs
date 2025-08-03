@@ -3,8 +3,9 @@
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
-const FeatureCard = ({ title, description, images, index }) => {
+const FeatureCard = ({ title, description, images, index, link }) => {
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = resolvedTheme || theme;
 
@@ -27,13 +28,15 @@ const FeatureCard = ({ title, description, images, index }) => {
     >
       <div className="mb-5 sm:mb-6 w-full aspect-[4/5] relative rounded-xl overflow-hidden">
         {imageSrc && (
-          <Image
-            src={imageSrc}
-            alt={title}
-            fill
-            className="object-cover rounded-xl"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+          <Link href={link}>
+             <Image
+               src={imageSrc}
+               alt={title}
+               fill
+               className="object-cover rounded-xl cursor-pointer transition duration-300 hover:brightness-90"
+               sizes="(max-width: 768px) 100vw, 50vw"
+             />
+           </Link>
         )}
       </div>
       <span className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">

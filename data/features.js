@@ -6,6 +6,7 @@ export const features = [
       light: "/images/index-images/formacion-complementaria.jpg",
       dark: "/images/index-images/formacion-complementaria.jpg",
     },
+    link: "/complementary",
   },
   {
     title: "Cursos especializados",
@@ -14,6 +15,7 @@ export const features = [
       light: "/images/index-images/cursos-especializados.jpg",
       dark: "/images/index-images/cursos-especializados.jpg",
     },
+    link: "/courses",
   },
   {
     title: "Formación SENA",
@@ -22,5 +24,6 @@ export const features = [
       light: "/images/index-images/formacion-sena.jpg",
       dark: "/images/index-images/formacion-sena.jpg",
     },
+    link: "/adso",
   },
 ];

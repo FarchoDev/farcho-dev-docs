@@ -1,13 +1,11 @@
 "use client";
 
-import { BackgroundPattern } from "../../components/hero-06/background-pattern";
 import { features } from "@/data/features";
 import FeatureCard from "@/components/feature-card/FeatureCard";
 
 const Features02Page = () => {
   return (
     <div className="flex items-center justify-center relative z-10">
-      <BackgroundPattern />
       <div className="max-w-screen-lg w-full py-12 px-6">
         <h2 className="text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight max-w-xl md:text-center md:mx-auto">
           Contenido Organizado por Categorías
