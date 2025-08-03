@@ -52,12 +52,20 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
-  if (!page) notFound();
+  try {
+    const params = await props.params;
+    const page = source.getPage(params.slug);
+    if (!page) notFound();
 
-  return {
-    title: page.data.title,
-    description: page.data.description,
-  };
+    return {
+      title: page.data.title,
+      description: page.data.description,
+    };
+  } catch (error) {
+    console.error('Error generando metadata:', error);
+    return {
+      title: 'Farcho Dev Docs',
+      description: 'Documentación técnica y cursos especializados',
+    };
+  }
 }
