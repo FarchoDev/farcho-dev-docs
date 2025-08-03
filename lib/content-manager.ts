@@ -1,7 +1,42 @@
-// lib/content-manager.ts
+/**
+ * Content Management System
+ * 
+ * Centralized content management utilities that provide DRY (Don't Repeat Yourself) 
+ * principles for handling all types of content in the application.
+ * 
+ * @fileoverview This module provides a unified system for managing content across
+ * the application, eliminating data duplication and providing consistent interfaces
+ * for courses, documentation, guides, and complementary content.
+ */
+
 import { BaseContent, SearchResult, FeaturedItem, ContentType, ContentMetadata } from './content-types';
 
+/**
+ * ContentManager Class
+ * 
+ * Central class for managing all content operations including normalization,
+ * filtering, sorting, and transformation of content data.
+ * 
+ * @example
+ * ```typescript
+ * // Normalize content
+ * const normalizedContent = ContentManager.normalizeContent(rawData, 'course');
+ * 
+ * // Generate search data
+ * const searchData = ContentManager.generateSearchData(contents);
+ * 
+ * // Filter content
+ * const featuredCourses = ContentManager.filterContent(contents, { 
+ *   type: 'course', 
+ *   featured: true 
+ * });
+ * ```
+ */
 export class ContentManager {
+  /**
+   * Static metadata configuration for content management
+   * Contains default descriptions, category mappings, and type configurations
+   */
   private static metadata: ContentMetadata = {
     defaultDescription: {
       course: 'Curso práctico paso a paso con ejemplos y ejercicios.',
@@ -40,7 +75,21 @@ export class ContentManager {
   };
 
   /**
-   * Normaliza el contenido base agregando campos faltantes
+   * Normalizes content by adding missing fields and ensuring consistency
+   * 
+   * @param content - Partial content object to normalize
+   * @param type - The content type (course, documentation, guide, complementary)
+   * @returns Fully normalized BaseContent object
+   * 
+   * @example
+   * ```typescript
+   * const rawContent = { 
+   *   title: 'React Basics', 
+   *   link: '/react-basics' 
+   * };
+   * const normalized = ContentManager.normalizeContent(rawContent, 'course');
+   * // Returns complete BaseContent with generated description, category, etc.
+   * ```
    */
   static normalizeContent(content: Partial<BaseContent>, type: ContentType): BaseContent {
     const config = this.metadata.typeConfig[type];
@@ -65,7 +114,13 @@ export class ContentManager {
   }
 
   /**
-   * Genera descripción automática basada en el título y tipo
+   * Generates automatic description based on title and content type
+   * 
+   * @param title - The content title
+   * @param type - The content type
+   * @returns Generated description string
+   * 
+   * @private
    */
   private static generateDescription(title: string, type: ContentType): string {
     const baseDescription = this.metadata.defaultDescription[type];
@@ -89,7 +144,10 @@ export class ContentManager {
   }
 
   /**
-   * Convierte contenido base a formato de búsqueda
+   * Converts BaseContent to SearchResult format
+   * 
+   * @param content - The content to convert
+   * @returns SearchResult object optimized for search functionality
    */
   static toSearchResult(content: BaseContent): SearchResult {
     return {
@@ -105,7 +163,10 @@ export class ContentManager {
   }
 
   /**
-   * Convierte contenido base a item destacado
+   * Converts BaseContent to FeaturedItem format
+   * 
+   * @param content - The content to convert
+   * @returns FeaturedItem object with all required featured properties
    */
   static toFeaturedItem(content: BaseContent): FeaturedItem {
     return {
@@ -118,14 +179,41 @@ export class ContentManager {
   }
 
   /**
-   * Genera datos de búsqueda para múltiples contenidos
+   * Generates search data for multiple content items
+   * 
+   * @param contents - Array of content to convert
+   * @returns Array of SearchResult objects
+   * 
+   * @example
+   * ```typescript
+   * const searchData = ContentManager.generateSearchData(allContent);
+   * // Use for search functionality
+   * ```
    */
   static generateSearchData(contents: BaseContent[]): SearchResult[] {
     return contents.map(content => this.toSearchResult(content));
   }
 
   /**
-   * Filtra contenido por criterios
+   * Filters content based on specified criteria
+   * 
+   * @param contents - Array of content to filter
+   * @param criteria - Filter criteria object
+   * @returns Filtered array of content
+   * 
+   * @example
+   * ```typescript
+   * // Get featured courses
+   * const featuredCourses = ContentManager.filterContent(allContent, {
+   *   type: 'course',
+   *   featured: true
+   * });
+   * 
+   * // Get content with specific tags
+   * const gitContent = ContentManager.filterContent(allContent, {
+   *   tags: ['git']
+   * });
+   * ```
    */
   static filterContent(
     contents: BaseContent[], 
@@ -149,7 +237,20 @@ export class ContentManager {
   }
 
   /**
-   * Ordena contenido por prioridad y otros criterios
+   * Sorts content based on specified criteria
+   * 
+   * @param contents - Array of content to sort
+   * @param sortBy - Sorting criteria ('priority', 'title', 'recent')
+   * @returns Sorted array of content (new array, doesn't mutate original)
+   * 
+   * @example
+   * ```typescript
+   * // Sort by priority (highest first)
+   * const sortedByPriority = ContentManager.sortContent(contents, 'priority');
+   * 
+   * // Sort alphabetically by title
+   * const sortedByTitle = ContentManager.sortContent(contents, 'title');
+   * ```
    */
   static sortContent(contents: BaseContent[], sortBy: 'priority' | 'title' | 'recent' = 'priority'): BaseContent[] {
     return [...contents].sort((a, b) => {
@@ -167,14 +268,19 @@ export class ContentManager {
   }
 
   /**
-   * Obtiene metadata de configuración
+   * Gets the complete metadata configuration
+   * 
+   * @returns Complete ContentMetadata object
    */
   static getMetadata(): ContentMetadata {
     return this.metadata;
   }
 
   /**
-   * Obtiene configuración para un tipo específico
+   * Gets configuration for a specific content type
+   * 
+   * @param type - The content type to get configuration for
+   * @returns Type-specific configuration object
    */
   static getTypeConfig(type: ContentType) {
     return this.metadata.typeConfig[type];
