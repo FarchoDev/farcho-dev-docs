@@ -4,11 +4,6 @@ import { baseOptions } from '@/app/layout.config';
 import React from 'react';
 
 export default function Layout({ children }: { children: ReactNode }) {
-  return (
-    <HomeLayout {...baseOptions}>
-      {children}
-    </HomeLayout>
-    
-  );
+  return <HomeLayout {...baseOptions}>{children}</HomeLayout>;
 }
 

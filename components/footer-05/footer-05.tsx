@@ -7,30 +7,27 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+
 const footerLinks = [
   {
-    title: "Overview",
-    href: "#",
+    title: "Inicio",
+    href: "/",
   },
   {
-    title: "Features",
-    href: "#",
+    title: "Acerca de",
+    href: "/about",
   },
   {
-    title: "Pricing",
-    href: "#",
+    title: "Contacto",
+    href: "/contact",
   },
   {
-    title: "Careers",
-    href: "#",
+    title: "Aviso Legal",
+    href: "/LegalPage",
   },
   {
-    title: "Help",
-    href: "#",
-  },
-  {
-    title: "Privacy",
-    href: "#",
+    title: "Faq",
+    href: "/faqs",
   },
 ];
 
@@ -41,54 +38,37 @@ const Footer05Page = () => {
       <footer>
         <div className="max-w-screen-xl mx-auto">
           <div className="py-12 flex flex-col justify-start items-center">
-              {/* Logo personalizado */}
-              <Link href="/">
-                <img
-                  src="/images/logo.png"
-                  alt="Farcho Dev - Plataforma Educativa"
-                  style={{
-                    width: "150px",
-                    height: "25px",
-                    objectFit: "cover",
-                  }}
-                />
-              </Link            >
-
-              <ul className="mt-6 flex items-center gap-4 flex-wrap">
-                {footerLinks.map(({ title, href }) => (
-                  <li key={title}>
-                    <Link
-                      href={href}
-                      className="text-muted-foreground hover:text-foreground font-medium"
-                    >
-                      {title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="mt-6 flex items-center gap-4 flex-wrap">
+              {footerLinks.map(({ title, href }) => (
+                <li key={title}>
+                  <Link
+                    href={href}
+                    className="text-muted-foreground hover:text-foreground font-medium"
+                  >
+                    {title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
           <Separator />
           <div className="py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-5 px-6 xl:px-0">
             {/* Copyright */}
-            <span className="text-muted-foreground">
-              &copy; {new Date().getFullYear()}{" "}
-              <Link href="/" target="_blank">
-                Shadcn UI Blocks
-              </Link>
-              . All rights reserved.
+            <span className="text-muted-foreground text-center sm:text-left max-w-sm">
+              &copy; {new Date().getFullYear()} Farcho Dev Docs. Proyecto independiente sin fines comerciales, creado por y para aprendices del SENA.
             </span>
 
             <div className="flex items-center gap-5 text-muted-foreground">
-              <Link href="#" target="_blank">
+              <Link href="#" target="_blank" rel="noopener noreferrer">
                 <TwitterIcon className="h-5 w-5" />
               </Link>
-              <Link href="#" target="_blank">
+              <Link href="#" target="_blank" rel="noopener noreferrer">
                 <DribbbleIcon className="h-5 w-5" />
               </Link>
-              <Link href="#" target="_blank">
+              <Link href="#" target="_blank" rel="noopener noreferrer">
                 <TwitchIcon className="h-5 w-5" />
               </Link>
-              <Link href="#" target="_blank">
+              <Link href="#" target="_blank" rel="noopener noreferrer">
                 <GithubIcon className="h-5 w-5" />
               </Link>
             </div>

@@ -4,7 +4,7 @@ import { BackgroundPattern } from "../../../components/hero-06/background-patter
 
 export default function ComprementaryPage() {
   return (
-    <main className="relative flex flex-col items-center justify-center text-center p-10 space-y-8">
+    <main className="flex flex-col items-center justify-center text-center p-10 space-y-8">
       <BackgroundPattern />
       <h1 className="text-4xl font-bold">Formación Complementaria</h1>
 
