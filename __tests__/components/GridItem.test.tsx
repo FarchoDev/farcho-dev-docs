@@ -21,7 +21,7 @@ describe('GridItem', () => {
   it('renders with correct image alt text', () => {
     render(<GridItem {...mockProps} />)
     
-    const image = screen.getByAltText('Curso Git Avanzado')
+    const image = screen.getByAltText('Imagen representativa de Curso Git Avanzado')
     expect(image).toBeInTheDocument()
   })
 
