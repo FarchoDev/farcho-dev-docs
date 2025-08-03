@@ -1,49 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-const features = [
-  {
-    category: "Marketing and Sales",
-    title: "Collect and enrich leads your way",
-    details:
-      "Take control over how and when to follow up with your leads. Store and reference leads in multiple tables and, from there, automatically send them personalized emails.",
-    tutorialLink: "#",
-    image: "/images/preview.jpg",
-  },
-  {
-    category: "Project Management",
-    title: "Streamline your workflows effortlessly",
-    details:
-      "Organize tasks, deadlines, and team collaboration in one place. Use customizable boards to manage projects efficiently and automate routine updates.",
-    tutorialLink: "#",
-    image: "/images/preview.jpg",
-  },
-  {
-    category: "Customer Support",
-    title: "Deliver seamless customer experiences",
-    details:
-      "Track and resolve customer queries faster with an integrated ticketing system. Set priorities, automate follow-ups, and enhance satisfaction with personalized responses.",
-    tutorialLink: "#",
-    image: "/images/preview.jpg",
-  },
-  {
-    category: "Team Collaboration",
-    title: "Stay connected with your team",
-    details:
-      "Simplify communication and align team efforts with shared boards and real-time updates. Enable transparent goal tracking and instant feedback for better results.",
-    tutorialLink: "#",
-    image: "/images/preview.jpg",
-  },
-  {
-    category: "Product Development",
-    title: "Accelerate innovation with ease",
-    details:
-      "Bring your product ideas to life by managing prototypes, feedback, and iterations in one place. Collaborate with your team to refine features and release with confidence.",
-    tutorialLink: "#",
-    image: "/images/preview.jpg",
-  },
-];
+import { features06 } from "@/data/features06";
+import Image from "next/image";
 
 const Features06Page = () => {
   return (
@@ -53,16 +12,18 @@ const Features06Page = () => {
           Boost Your Strategy with Smart Features
         </h2>
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
-          {features.map((feature) => (
+          {features06.map((feature) => (
             <div
               key={feature.category}
               className="flex flex-col md:flex-row items-center gap-x-20 gap-y-6 md:odd:flex-row-reverse"
             >
               <div className="w-full aspect-[6/4] bg-muted rounded-xl border border-border/50 basis-1/2 overflow-hidden">
-                <img
-                  src={feature.image}
+                <Image
+                  src={feature.images?.light ?? "/placeholder.png"}
                   alt={feature.title}
                   className="w-full h-full object-cover"
+                  width={600}
+                  height={400}
                 />
               </div>
               <div className="basis-1/2 shrink-0">
@@ -73,7 +34,7 @@ const Features06Page = () => {
                   {feature.title}
                 </h4>
                 <p className="text-muted-foreground text-[17px]">
-                  {feature.details}
+                  {feature.description}
                 </p>
                 <Button
                   asChild

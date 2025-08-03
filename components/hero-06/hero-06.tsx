@@ -1,10 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, CirclePlay } from "lucide-react";
+import { BackgroundPattern } from "../../components/hero-06/background-pattern";
 
 const Hero06 = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
+      <BackgroundPattern />
       <div className="absolute inset-0 -z-10">
       </div>
         <div className="relative z-10 text-center max-w-2xl">
