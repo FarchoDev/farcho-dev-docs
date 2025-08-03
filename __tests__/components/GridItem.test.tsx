@@ -40,7 +40,7 @@ describe('GridItem', () => {
     
     render(<GridItem {...propsWithoutImages} />)
     
-    const image = screen.getByAltText('Curso Git Avanzado')
+    const image = screen.getByAltText('Imagen representativa de Curso Git Avanzado')
     expect(image).toHaveAttribute('src', expect.stringContaining('fallback.jpg'))
   })
 
