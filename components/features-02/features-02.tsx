@@ -1,6 +1,6 @@
 "use client";
 
-import { features } from "@/data/features";
+import { featuredItems } from "@/data/unified-content";
 import FeatureCard from "@/components/feature-card/FeatureCard";
 import { APP_CONFIG } from "@/lib/config";
 
@@ -12,10 +12,13 @@ const Features02Page = () => {
           Contenido Organizado por Categorías
         </h2>
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-          {features.map((feature, index) => (
+          {featuredItems.slice(0, 6).map((feature, index) => (
             <FeatureCard 
-              key={feature.title} 
-              {...feature} 
+              key={feature.id} 
+              title={feature.title}
+              description={feature.description}
+              images={feature.images}
+              link={feature.link}
               index={index}
             />
           ))}

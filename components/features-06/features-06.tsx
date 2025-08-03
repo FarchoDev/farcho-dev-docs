@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { features06 } from "@/data/features06";
+import { contentByType } from "@/data/unified-content";
 import Image from "next/image";
+import { APP_CONFIG } from "@/lib/config";
 
 const Features06Page = () => {
+  // Usar contenido complementario para esta sección
+  const complementaryContent = contentByType.complementary.slice(0, 3);
+
   return (
     <div className="flex items-center justify-center">
       <div className="max-w-screen-lg w-full py-12 px-6">
@@ -12,16 +16,18 @@ const Features06Page = () => {
           Formación extendida
         </h2>
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
-          {features06.map((feature) => (
+          {complementaryContent.map((feature, index) => (
             <div
-              key={feature.category}
+              key={feature.id}
               className="flex flex-col md:flex-row items-center gap-x-20 gap-y-6 md:odd:flex-row-reverse"
             >
               <div className="w-full aspect-[6/4] bg-muted rounded-xl border border-border/50 basis-1/2 overflow-hidden">
                 <Image
-                  src={feature.images?.light ?? "/placeholder.png"}
+                  src={feature.images?.light ?? APP_CONFIG.images.fallback}
                   alt={feature.title}
                   className="w-full h-full object-cover"
+                  sizes={APP_CONFIG.images.defaultSizes}
+                  quality={APP_CONFIG.images.quality}
                   width={600}
                   height={400}
                 />
@@ -40,7 +46,7 @@ const Features06Page = () => {
                   asChild
                   className="mt-6 rounded-full min-w-40 text-[15px]"
                 >
-                  <Link href={feature.tutorialLink}>
+                  <Link href={feature.link}>
                     Learn More <ArrowRight />
                   </Link>
                 </Button>
