@@ -1,0 +1,15 @@
+# Prettier ignore patterns
+node_modules
+.next
+dist
+build
+*.log
+.env*
+.git
+public/
+content/
+*.mdx
+*.md
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
