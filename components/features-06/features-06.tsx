@@ -9,7 +9,7 @@ const Features06Page = () => {
     <div className="flex items-center justify-center">
       <div className="max-w-screen-lg w-full py-12 px-6">
         <h2 className="text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight max-w-xl md:text-center md:mx-auto">
-          Boost Your Strategy with Smart Features
+          Formación extendida
         </h2>
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
           {features06.map((feature) => (
