@@ -24,7 +24,7 @@ describe('FeatureCard', () => {
   it('renders with correct image alt text', () => {
     render(<FeatureCard {...mockProps} />)
     
-    const image = screen.getByAltText('Curso Git')
+    const image = screen.getByAltText('Imagen representativa de Curso Git')
     expect(image).toBeInTheDocument()
   })
 
