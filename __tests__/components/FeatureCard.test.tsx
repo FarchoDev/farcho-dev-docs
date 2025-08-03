@@ -43,7 +43,7 @@ describe('FeatureCard', () => {
     
     render(<FeatureCard {...propsWithoutImages} />)
     
-    const image = screen.getByAltText('Curso Git')
+    const image = screen.getByAltText('Imagen representativa de Curso Git')
     expect(image).toHaveAttribute('src', expect.stringContaining('fallback.jpg'))
   })
 })
