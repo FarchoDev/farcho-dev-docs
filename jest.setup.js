@@ -25,9 +25,9 @@ jest.mock('next-themes', () => ({
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
   motion: {
-    div: 'div',
-    article: 'article',
-    span: 'span',
+    div: ({ children, ...props }) => <div {...props}>{children}</div>,
+    article: ({ children, ...props }) => <article {...props}>{children}</article>,
+    span: ({ children, ...props }) => <span {...props}>{children}</span>,
   },
   AnimatePresence: ({ children }) => children,
 }))
