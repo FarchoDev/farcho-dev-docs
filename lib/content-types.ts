@@ -2,6 +2,8 @@
 export type ContentType = 'course' | 'documentation' | 'guide' | 'complementary';
 
 export interface BaseContent {
+  date: unknown;
+  author: string;
   id: string;
   title: string;
   description: string;
