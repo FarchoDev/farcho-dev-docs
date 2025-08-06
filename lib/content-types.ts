@@ -2,6 +2,7 @@
 export type ContentType = 'course' | 'documentation' | 'guide' | 'complementary';
 
 export interface BaseContent {
+  badge: any;
   date: unknown;
   author: string;
   id: string;
