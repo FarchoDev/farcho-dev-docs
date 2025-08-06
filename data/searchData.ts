@@ -1,5 +1,5 @@
 // Combined search data for all content
-import { courses } from './courses';
+import { courses } from './categories';
 import { documents } from './documents';
 import { complementary } from './complementary';
 

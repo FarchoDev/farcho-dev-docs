@@ -1,7 +1,7 @@
 // data/unified-content.ts - NUEVO SISTEMA UNIFICADO
 import { BaseContent, SearchResult, FeaturedItem } from '@/lib/content-types';
 import { ContentManager } from '@/lib/content-manager';
-import { courses } from './courses';
+import { courses } from './categories';
 import { documents } from './documents';
 import { complementary } from './complementary';
 

@@ -74,7 +74,7 @@ const FeatureCard = memo<FeatureCardProps>(({
 
   return (
     <motion.article
-      className={`flex flex-col items-center text-center bg-white dark:bg-gray-900 p-4 ${componentConfig.borderRadius} shadow-md h-full border border-gray-200 dark:border-gray-700 group`}
+      className={`flex flex-col items-center text-center bg-white dark:bg-gray-900 p-6 ${componentConfig.borderRadius} shadow-md h-full border border-gray-200 dark:border-gray-700 group`}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ 
@@ -87,7 +87,7 @@ const FeatureCard = memo<FeatureCardProps>(({
       role="article"
       aria-labelledby={`feature-title-${index}`}
     >
-      <div className={`mb-5 sm:mb-6 w-full aspect-[${componentConfig.aspectRatio}] relative ${componentConfig.borderRadius} overflow-hidden`}>
+      <div className={`mb-5 sm:mb-6 w-full aspect-[1/1] relative ${componentConfig.borderRadius} overflow-hidden`}>
         {imageSrc && (
           <Link href={link} className="block h-full" aria-label={`Ver más sobre ${title}`}>
              <Image

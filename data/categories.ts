@@ -77,3 +77,5 @@ export const stats = [
     color: 'text-orange-600'
   }
 ];
+
+export { courses };

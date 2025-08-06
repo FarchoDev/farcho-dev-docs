@@ -47,7 +47,7 @@ const Features06Page = () => {
                   className="mt-6 rounded-full min-w-40 text-[15px]"
                 >
                   <Link href={feature.link}>
-                    Learn More <ArrowRight />
+                    Ver más <ArrowRight />
                   </Link>
                 </Button>
               </div>
