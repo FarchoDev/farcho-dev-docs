@@ -17,8 +17,19 @@ import {
 
 const Blog01Page = () => {
   const [filter, setFilter] = useState("recommended");
+  const [tagFilter, setTagFilter] = useState("all");
 
-  const filteredContent = useMemo(() => {
+  // 1. Extraer todos los tags únicos
+  const allTags = useMemo(() => {
+    const tagsSet = new Set<string>();
+    completeContent.forEach((item) => {
+      item.tags?.forEach((tag) => tagsSet.add(tag));
+    });
+    return Array.from(tagsSet).sort();
+  }, []);
+
+  // 2. Filtrar por tipo (recommended, latest, popular)
+  const filteredByType = useMemo(() => {
     if (filter === "latest") {
       return [...completeContent]
         .filter((item) => item.date)
@@ -32,24 +43,51 @@ const Blog01Page = () => {
       return completeContent.filter((item) => item.trending);
     }
 
-    // recommended o default: featured
     return completeContent.filter((item) => item.featured);
   }, [filter]);
 
+  // 3. Filtrar por tag (si se eligió alguno)
+  const filteredContent = useMemo(() => {
+    if (tagFilter === "all") return filteredByType;
+
+    return filteredByType.filter(
+      (item) => item.tags?.includes(tagFilter)
+    );
+  }, [filteredByType, tagFilter]);
+
   return (
     <div className="max-w-screen-xl mx-auto py-16 px-6 xl:px-0">
-      <div className="flex items-end justify-between">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <h2 className="text-3xl font-bold tracking-tight">Posts</h2>
-        <Select defaultValue="recommended" onValueChange={setFilter}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Recommended" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="recommended">Recommended</SelectItem>
-            <SelectItem value="latest">Latest</SelectItem>
-            <SelectItem value="popular">Popular</SelectItem>
-          </SelectContent>
-        </Select>
+
+        <div className="flex flex-col sm:flex-row gap-4">
+          {/* Filtro por tipo */}
+          <Select defaultValue="recommended" onValueChange={setFilter}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Filtrar por tipo" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="recommended">Recommended</SelectItem>
+              <SelectItem value="latest">Latest</SelectItem>
+              <SelectItem value="popular">Popular</SelectItem>
+            </SelectContent>
+          </Select>
+
+          {/* Filtro por tag */}
+          <Select defaultValue="all" onValueChange={setTagFilter}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Filtrar por tag" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Todos los tags</SelectItem>
+              {allTags.map((tag) => (
+                <SelectItem key={tag} value={tag}>
+                  {tag}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -68,7 +106,11 @@ const Blog01Page = () => {
                 <CardHeader className="p-2">
                   {item.images ? (
                     <img
-                      src={typeof item.images === "string" ? item.images : item.images.light}
+                      src={
+                        typeof item.images === "string"
+                          ? item.images
+                          : item.images.light
+                      }
                       alt={item.title}
                       className="aspect-video object-cover rounded-lg w-full"
                     />

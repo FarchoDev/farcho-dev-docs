@@ -45,6 +45,11 @@ export const baseOptions: BaseLayoutProps = {
       text: 'Formación Complementaria',
       url: '/complementary',
       active: 'nested-url',
-    }
+    },
+    {
+      text: 'Blog',
+      url: '/blog',
+      active: 'nested-url',
+    },
   ],
 };
