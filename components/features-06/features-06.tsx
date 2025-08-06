@@ -35,6 +35,9 @@ const categorySections = [
 ];
 
 const Features06Page = () => {
+  // Usar contenido complementario para esta sección
+  const complementaryContent = contentByType.complementary.slice(0, 3);
+
   return (
     <div className="flex items-center justify-center">
       <div className="max-w-screen-lg w-full py-12 px-6">
@@ -43,7 +46,7 @@ const Features06Page = () => {
         </h2>
 
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
-          {categorySections.map((feature, index) => (
+          {complementaryContent.map((feature, index) => (
             <div
               key={feature.id}
               className="flex flex-col md:flex-row items-center gap-x-20 gap-y-6 md:odd:flex-row-reverse"

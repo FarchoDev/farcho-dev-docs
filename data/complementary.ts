@@ -35,6 +35,24 @@ const rawComplementary = [
     recent: false,
     priority: 8,
   },
+  // ✅ Agregar nuevo contenido aquí
+  {
+    id: 'comp-metodologias-agiles',
+    title: 'Metodologías Ágiles en Desarrollo',
+    description: 'Scrum, Kanban y otras metodologías para equipos de desarrollo.',
+    link: '/docs/sena/fc_docs/metodologias-agiles',
+    images: {
+      light: '/images/index-images/cursos/agile-light.svg',
+      dark: '/images/index-images/cursos/agile-dark.svg',
+    },
+    tags: ['scrum', 'kanban', 'agile', 'metodologias'],
+    readTime: '5h',
+    difficulty: 'intermediate' as const,
+    featured: true,
+    trending: true,
+    recent: true,
+    priority: 9,
+  },
 ];
 
 // Normalizar usando ContentManager
