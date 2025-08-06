@@ -11,7 +11,7 @@ const categorySections = [
     category: "Formación Profesional",
     description:
       "Explora nuestra colección de cursos diseñados para potenciar tus habilidades técnicas y profesionales.",
-    link: "/categorias/cursos",
+    link: "#",
     image: "/images/index-images/comingsoon.webp",
   },
   {
@@ -20,7 +20,7 @@ const categorySections = [
     category: "Documentación Técnica",
     description:
       "Encuentra documentación útil, proyectos y material especializado para el área de desarrollo.",
-    link: "/categorias/analisis-desarrollo",
+    link: "#",
     image: "/images/index-images/comingsoon.webp",
   },
   {
@@ -29,15 +29,12 @@ const categorySections = [
     category: "Complementario",
     description:
       "Accede a contenido adicional que complementa tu formación con recursos diversos y útiles.",
-    link: "/categorias/complementaria",
+    link: "#",
     image: "/images/index-images/comingsoon.webp",
   },
 ];
 
 const Features06Page = () => {
-  // Usar contenido complementario para esta sección
-  const complementaryContent = contentByType.complementary.slice(0, 3);
-
   return (
     <div className="flex items-center justify-center">
       <div className="max-w-screen-lg w-full py-12 px-6">
@@ -46,7 +43,7 @@ const Features06Page = () => {
         </h2>
 
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
-          {complementaryContent.map((feature, index) => (
+          {categorySections.map((feature, index) => (
             <div
               key={feature.id}
               className="flex flex-col md:flex-row items-center gap-x-20 gap-y-6 md:odd:flex-row-reverse"

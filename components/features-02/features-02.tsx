@@ -8,29 +8,30 @@ const categoryCards = [
     id: "category-courses",
     title: "Cursos",
     description: "Accede a nuestra colección de cursos disponibles para fortalecer tus competencias.",
+    link: "/courses",
     images: {
-      light: "/images/categorias/cursos.png",
-      dark: "/images/categorias/cursos.png",
+      light: "/images/index-images/cursos-especializados.jpg",
+      dark: "/images/index-images/cursos-especializados.jpg",
     },
   },
   {
     id: "category-docs",
     title: "Análisis y Desarrollo de Software",
     description: "Documentación y recursos clave para el área de análisis y desarrollo.",
-    link: "/categorias/analisis-desarrollo",
+    link: "/adso",
     images: {
-      light: "/images/categorias/analisis.png",
-      dark: "/images/categorias/analisis.png"
+      light: "/images/index-images/formacion-sena.jpg",
+      dark: "/images/index-images/formacion-sena.jpg"
     },
   },
   {
     id: "category-complementary",
     title: "Formación Complementaria",
-    description: "Recursos que complementan tu formación con habilidades adicionales.",
+    description: "Recursos que complementan tu formación con| habilidades adicionales.",
     link: "/categorias/complementaria",
     images: {
-      light: "/images/index-images/formacion-complementaria.png",
-      dark: "/images/index-images/formacion-complementaria.png"
+      light: "/images/index-images/formacion-complementaria.jpg",
+      dark: "/images/index-images/formacion-complementaria.jpg"
     },
   },
 ];
@@ -50,7 +51,7 @@ const Features02Page = () => {
               title={category.title}
               description={category.description}
               images={category.images}
-              link={category.link}
+              link={category.link ?? ""}
               index={index}
             />
           ))}
