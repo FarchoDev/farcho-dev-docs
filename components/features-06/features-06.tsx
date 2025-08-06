@@ -6,8 +6,22 @@ import Image from "next/image";
 import { APP_CONFIG } from "@/lib/config";
 
 const Features06Page = () => {
-  // Usar contenido complementario para esta sección
+  // ✅ Puedes personalizar qué contenido mostrar aquí
+  // Opción 1: Solo complementario (actual)
   const complementaryContent = contentByType.complementary.slice(0, 3);
+  
+  // Opción 2: Contenido mixto de diferentes tipos
+  // const mixedContent = [
+  //   ...contentByType.complementary.slice(0, 1),
+  //   ...contentByType.documentation.slice(0, 1), 
+  //   ...contentByType.courses.slice(0, 1)
+  // ];
+  
+  // Opción 3: Solo documentación ADS-SENA
+  // const complementaryContent = contentByType.documentation.slice(0, 3);
+  
+  // Usar el contenido seleccionado
+  const displayContent = complementaryContent;
 
   return (
     <div className="flex items-center justify-center">
