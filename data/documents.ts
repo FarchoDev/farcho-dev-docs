@@ -5,6 +5,20 @@ import { ContentManager } from '@/lib/content-manager';
 // Datos base de documentación (DRY - Single Source of Truth)
 const rawDocuments = [
   {
+    id: 'doc-caracterizacion-de-procesos',
+    title: 'Caracterización de procesos',
+    description: 'La caracterización de procesos es una actividad fundamental en la gestión de organizaciones, ya que permite entender y mejorar la forma en que se llevan a cabo las actividades diarias.',
+    link: '/docs/sena/ads_docs/caracterizacion-de-procesos',
+    images: {
+      light: '/images/caracterizacion-de-procesos/001.svg',
+      dark: '/images/caracterizacion-de-procesos/001.svg',
+    },
+    tags: ['fase-1', 'analisis',],
+    readTime: '5h',
+    difficulty: 'intermediate' as const,
+    priority: 9,
+  },
+  {
     id: 'doc-sistemas-operativos',
     title: 'Sistemas operativos de red',
     description: 'Configuración y administración de sistemas operativos en entornos de red.',

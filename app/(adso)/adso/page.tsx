@@ -3,6 +3,7 @@
 
 import { DocumentGrid } from "@/components/grids/DocumentGrid";
 import { BackgroundPattern } from "@/components/hero-06/background-pattern";
+import { Tags } from "lucide-react";
 import React from "react";
 
 export default function AdsobaPage() {
@@ -23,28 +24,28 @@ export default function AdsobaPage() {
           title="Fase 1: Análisis"
           description="Comprensión de requerimientos, documentación técnica y estudio del problema."
         >
-          <DocumentGrid filter={{ phase: "analisis" }} />
+          <DocumentGrid filter={{ tags: ["analisis"] }} />
         </PhaseSection>
 
         <PhaseSection
           title="Fase 2: Diseño"
           description="Planificación de la solución, arquitectura del software y herramientas."
         >
-          <DocumentGrid filter={{ phase: "diseno" }} />
+          <DocumentGrid filter={{ tags: ["diseno"] }} />
         </PhaseSection>
 
         <PhaseSection
           title="Fase 3: Desarrollo"
           description="Programación de la solución, patrones de diseño y pruebas unitarias."
         >
-          <DocumentGrid filter={{ phase: "desarrollo" }} />
+          <DocumentGrid filter={{ tags: ["desarrollo"] }} />
         </PhaseSection>
 
         <PhaseSection
           title="Fase 4: Implantación y pruebas"
           description="Pruebas funcionales, control de calidad y entrega del producto final."
         >
-          <DocumentGrid filter={{ phase: "implantacion" }} />
+          <DocumentGrid filter={{ tags: ["implantacion"] }} />
         </PhaseSection>
       </div>
     </main>
