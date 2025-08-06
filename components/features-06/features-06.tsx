@@ -30,7 +30,7 @@ const Features06Page = () => {
           Formación extendida
         </h2>
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
-          {complementaryContent.map((feature, index) => (
+          {displayContent.map((feature, index) => (
             <div
               key={feature.id}
               className="flex flex-col md:flex-row items-center gap-x-20 gap-y-6 md:odd:flex-row-reverse"
