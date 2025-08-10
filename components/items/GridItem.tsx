@@ -8,9 +8,9 @@ import { motion } from "framer-motion";
 import { APP_CONFIG } from "@/lib/config";
 
 /**
- * Props for the GridItem component
+ * Props for the GridItem component.
  */
-interface GridItemProps {
+export interface GridItemProps {
   /** The title to display on the grid item */
   title: string;
   /** The destination URL when the item is clicked */
@@ -26,12 +26,10 @@ interface GridItemProps {
 
 /**
  * GridItem Component
- * 
- * A responsive grid item component that displays content with theme-aware images.
- * Used primarily in grid layouts for courses, documentation, and complementary content.
- * Features consistent hover animations and accessibility support.
- * 
- * @component
+ *
+ * A responsive and theme-aware grid item used in grid layouts for
+ * courses, documentation, and complementary content.
+ *
  * @example
  * ```tsx
  * <GridItem
@@ -43,36 +41,30 @@ interface GridItemProps {
  *   }}
  * />
  * ```
- * 
- * @param props - The component props
- * @returns A memoized grid item component
  */
-const GridItem = memo<GridItemProps>(({ title, link, images }) => {
+const GridItem = memo(function GridItem({ title, link, images }: GridItemProps) {
   const { theme, resolvedTheme } = useTheme();
-  const currentTheme = resolvedTheme || theme || 'light';
-  
-  // Obtener imagen según el tema con fallback robusto
-  const selectedImage = images?.[currentTheme === "dark" ? "dark" : "light"];
-  const imageSrc = selectedImage && selectedImage.trim() !== ""
-    ? selectedImage
-    : APP_CONFIG.images.fallback;
+  const currentTheme = resolvedTheme || theme || "light";
 
-  // Usar configuración centralizada para animaciones
-  const animationConfig = APP_CONFIG.animation;
+  // Select image based on current theme, with fallback
+  const imageSrc =
+    images?.[currentTheme === "dark" ? "dark" : "light"]?.trim() || APP_CONFIG.images.fallback;
+
+  // Centralized animation configuration
+  const { transitions, ease } = APP_CONFIG.animation;
+
+  const titleId = `grid-item-title-${title.replace(/\s+/g, "-").toLowerCase()}`;
 
   return (
     <motion.div
-      className="text-center p-4 border rounded-xl shadow-md bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 flex flex-col justify-between h-full group"
+      className="flex h-full flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 text-center shadow-md dark:border-gray-700 dark:bg-gray-800 group"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      transition={{ 
-        duration: animationConfig.transitions.fast.duration,
-        ease: animationConfig.ease
-      }}
+      transition={{ duration: transitions.fast.duration, ease }}
       role="article"
-      aria-labelledby={`grid-item-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
+      aria-labelledby={titleId}
     >
-      <div className="w-40 h-40 mx-auto flex items-center justify-center">
+      <div className="mx-auto flex h-40 w-40 items-center justify-center">
         <Image
           src={imageSrc}
           alt={`Imagen representativa de ${title}`}
@@ -81,13 +73,12 @@ const GridItem = memo<GridItemProps>(({ title, link, images }) => {
           className="rounded-lg transition-transform duration-300 group-hover:scale-105"
           sizes={APP_CONFIG.images.defaultSizes}
           quality={APP_CONFIG.images.quality}
-          priority={false}
         />
       </div>
 
       <p
-        id={`grid-item-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
-        className="text-lg font-semibold mt-2 text-gray-800 dark:text-gray-200 line-clamp-2 overflow-hidden cursor-default group-hover:text-primary transition-colors"
+        id={titleId}
+        className="mt-2 line-clamp-2 overflow-hidden text-lg font-semibold text-gray-800 transition-colors dark:text-gray-200 group-hover:text-primary"
         title={title}
       >
         {title}
@@ -95,10 +86,10 @@ const GridItem = memo<GridItemProps>(({ title, link, images }) => {
 
       <Link href={link} className="mt-auto" aria-label={`Ver más sobre ${title}`}>
         <motion.span
-          className="inline-block px-4 py-2 mt-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
+          className="mt-2 inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          transition={{ duration: animationConfig.transitions.fast.duration }}
+          transition={{ duration: transitions.fast.duration }}
         >
           Ver más
         </motion.span>
@@ -107,7 +98,6 @@ const GridItem = memo<GridItemProps>(({ title, link, images }) => {
   );
 });
 
-GridItem.displayName = 'GridItem';
+GridItem.displayName = "GridItem";
 
 export default GridItem;
-export type { GridItemProps };
