@@ -28,7 +28,7 @@ const categoryCards = [
     id: "category-complementary",
     title: "Formación Complementaria",
     description: "Recursos que complementan tu formación con| habilidades adicionales.",
-    link: "/categorias/complementaria",
+    link: "/complementary",
     images: {
       light: "/images/index-images/formacion-complementaria.jpg",
       dark: "/images/index-images/formacion-complementaria.jpg"
