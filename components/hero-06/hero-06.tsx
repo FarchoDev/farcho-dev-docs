@@ -14,7 +14,7 @@ const Hero06 = () => {
       <div className="absolute inset-0 -z-10">
       </div>
         <div className="relative z-10 text-center max-w-2xl">
-          <Badge className="bg-gradient-to-br via-70% from-primary via-muted/30 to-primary rounded-full py-1 border-none">
+          <Badge className="bg-gradient-to-r from-primary/90 via-pink-500/80 to-purple-500/80 text-white rounded-full py-1 px-4 border-none shadow-mda">
             Recién lanzado v1.0.0
           </Badge>
           <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
